@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow - Advanced Todo List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%236366f1'>✓</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-tasks"></i>
+          <span class="logo-text">TaskFlow</span>
+          <span class="logo-badge">v1.0</span>
+        </div>
+        <div class="header-actions">
+          <button id="addProjectBtn" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+            <span>New Project</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h2><i class="fas fa-folder-open"></i> Projects</h2>
+        </div>
+        <nav class="project-list" id="projectList">
+          <!-- Projects rendered by JS -->
+        </nav>
+        <div class="sidebar-footer">
+          <div class="total-tasks" id="totalTasks">
+            <i class="fas fa-check-circle"></i>
+            <span>0 tasks completed</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Todo Section -->
+      <section class="main-content">
+        <div class="content-header">
+          <div class="project-info">
+            <h2 id="currentProjectTitle">My Tasks</h2>
+            <span class="task-count" id="taskCount">0 tasks</span>
+          </div>
+          <div class="content-actions">
+            <button id="addTodoBtn" class="btn btn-primary">
+              <i class="fas fa-plus"></i>
+              <span>Add Task</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="todo-container" id="todoContainer">
+          <div class="todo-list" id="todoList">
+            <!-- Todos rendered by JS -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="projectModalTitle">Create New Project</h3>
+          <button class="modal-close" id="projectModalClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <form id="projectForm">
+          <div class="form-group">
+            <label for="projectName">Project Name</label>
+            <input type="text" id="projectName" placeholder="Enter project name..." required autofocus />
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="projectCancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-plus"></i> Create Project
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Todo Modal -->
+    <div class="modal" id="todoModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="todoModalTitle">Add New Task</h3>
+          <button class="modal-close" id="todoModalClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <form id="todoForm">
+          <div class="form-group">
+            <label for="todoTitle">Task Title <span class="required">*</span></label>
+            <input type="text" id="todoTitle" placeholder="What needs to be done?" required autofocus />
+          </div>
+          <div class="form-group">
+            <label for="todoDescription">Description</label>
+            <textarea id="todoDescription" placeholder="Add details about this task..." rows="3"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="todoDueDate">Due Date <span class="required">*</span></label>
+              <input type="date" id="todoDueDate" required />
+            </div>
+            <div class="form-group">
+              <label for="todoPriority">Priority</label>
+              <select id="todoPriority">
+                <option value="low">🟢 Low</option>
+                <option value="medium" selected>🟡 Medium</option>
+                <option value="high">🔴 High</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="todoCancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="todoSaveBtn">
+              <i class="fas fa-save"></i> Save Task
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
